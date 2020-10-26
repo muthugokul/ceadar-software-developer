@@ -1,4 +1,14 @@
 <h1>News</h1>
+
+<div class="row mb-3">
+    <div class="col-md-3">
+      <div class="form-row">
+        <label class="col-form-label mr-3">Sort By:</label>
+        <button type="button" class="btn btn-primary" id="sortBy" (click)="sort()">Time</button>
+      </div>
+    </div>
+</div>
+
 <div class="row table-heading">
     <div class="col-md-3">
         <p>Time</p>
@@ -15,7 +25,7 @@
 </div>
 <ng-container *ngIf="news$ | async as news">
     <form [formGroup]="newsFormGroup">
-        <ng-container *ngFor="let item of news">
+        <ng-container *ngFor="let item of news | sort: sortCriteria">
             <app-news-details [news]="item" [parentForm]="newsFormGroup"></app-news-details>
         </ng-container>
     </form>

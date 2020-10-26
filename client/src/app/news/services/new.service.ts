@@ -1,5 +1,6 @@
 import { Inject, Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { map } from "rxjs/operators";
 import { WebSocketSubject } from "rxjs/webSocket";
 
 import { WS_URL } from "../../api.token";
@@ -23,12 +24,34 @@ export class NewsService {
     }
 
     get(): Observable<News[]> {
-        return this.webSocketSubject.asObservable();
+        return this.webSocketSubject.asObservable().pipe(
+            map(x => this.mapToNews(x)));
     }
 
     update(news: News): void {
         if (news) {
             this.webSocketSubject.next(JSON.stringify(news));
+        }
+    }
+
+    private mapToNews(response: any[]): News[] {
+        const newsArray: News[] = [];
+
+        if (response && response.length) {
+            response.forEach(item => {
+                const date = this.ConvertToDate(item.time);
+                newsArray.push(new News(item.id, item.headlines, item.time, date, item.description));
+            })
+        }
+
+        return newsArray;
+    }
+
+    private ConvertToDate(value: string): Date {
+        if (value) {
+            const dateTime = value.trim().split("ET");
+
+            return new Date(`${dateTime[1].trim()}  ${dateTime[0].trim()}`);
         }
     }
 }

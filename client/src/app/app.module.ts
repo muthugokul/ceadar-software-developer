@@ -11,13 +11,15 @@ import { NewsEditComponent } from "./news/news-edit.component";
 import { NewsComponent } from "./news/news.component";
 import { NewsService } from "./news/services/new.service";
 import { NewsEventService } from "./news/services/news-event.service";
+import { SortPipe } from "./news/services/pipe/sort.pipe";
 
 @NgModule({
   declarations: [
     AppComponent,
     NewsComponent,
     NewsDetailComponent,
-    NewsEditComponent
+    NewsEditComponent,
+    SortPipe
   ],
   imports: [
     BrowserModule,

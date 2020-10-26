@@ -4,12 +4,14 @@ import { Observable } from "rxjs";
 
 import { News } from "./models/news.model";
 import { NewsService } from "./services/new.service";
+import { ISortByCriteria } from "./services/pipe/sort.pipe";
 
 @Component({
     templateUrl: "./news.component.html"
 })
 
 export class NewsComponent implements OnInit {
+    sortCriteria: ISortByCriteria
 
     news$: Observable<News[]>;
     newsFormGroup: FormGroup;
@@ -22,5 +24,19 @@ export class NewsComponent implements OnInit {
 
     ngOnInit(): void {
         this.news$ = this.newsService.get();
+    }
+
+    sort(): void {
+        if (!this.sortCriteria) {
+            this.sortCriteria = {
+                column: "time",
+                isAscending: true
+            } as ISortByCriteria
+        }
+
+        this.sortCriteria = {
+            column: this.sortCriteria.column,
+            isAscending: !this.sortCriteria.isAscending
+        } as ISortByCriteria;
     }
 }

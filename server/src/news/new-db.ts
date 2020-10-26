@@ -12,7 +12,7 @@ const csvWriter = createCsvWriter.createObjectCsvWriter({
     path: newAPIUrl,
     header: [
         { id: "headlines", title: "Headlines" },
-        { id: "title", title: "Title" },
+        { id: "time", title: "Time" },
         { id: "description", title: "Description" },
     ]
 });
