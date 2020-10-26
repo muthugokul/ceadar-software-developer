@@ -1,12 +1,12 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import { AbstractControl, Form, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 import { News } from "./models/news.model";
+import { NewsService } from "./services/new.service";
 import { NewsEventService } from "./services/news-event.service";
-import { NewsService } from './services/new.service';
 
 @Component({
-    selector: "news-edit",
+    selector: "app-news-edit",
     templateUrl: "./news-edit.component.html"
 })
 
@@ -40,11 +40,11 @@ export class NewsEditComponent implements OnInit {
 
     ngOnInit(): void {
         if (this.parentForm) {
-            this.initializeEditForm();     
-            this.registerValueChanges();   
+            this.initializeEditForm();
+            this.registerValueChanges();
         }
     }
-    
+
     save(): void {
         this.newsService.update(this.news);
         this.newsEventService.saveNews.emit();
@@ -62,9 +62,9 @@ export class NewsEditComponent implements OnInit {
 
     private getFormGroup(): FormGroup {
         const formGroup = this.fb.group({
-            "time": ['', [Validators.required]],
-            "headlines": ['', [Validators.required]],
-            "description": ['', [Validators.required]]
+            time: ["", [Validators.required]],
+            headlines: ["", [Validators.required]],
+            description: ["", [Validators.required]]
         });
 
         return formGroup;

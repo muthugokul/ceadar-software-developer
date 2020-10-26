@@ -1,16 +1,17 @@
-import { AppPage } from './app.po';
-import { browser, logging } from 'protractor';
+import { browser, logging } from "protractor";
 
-describe('workspace-project App', () => {
+import { AppPage } from "./app.po";
+
+describe("workspace-project App", () => {
   let page: AppPage;
 
   beforeEach(() => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it("should display welcome message", () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('news-client app is running!');
+    expect(page.getTitleText()).toEqual("news-client app is running!");
   });
 
   afterEach(async () => {

@@ -1,24 +1,23 @@
 import { Inject, Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { map } from "rxjs/operators" 
 import { WebSocketSubject } from "rxjs/webSocket";
 
-import { News } from "../models/news.model";
 import { WS_URL } from "../../api.token";
+import { News } from "../models/news.model";
 
 @Injectable()
 export class NewsService {
-    private _webSocketSubject: WebSocketSubject<any>;
+    private wsSubject: WebSocketSubject<any>;
 
     private get webSocketSubject(): WebSocketSubject<any> {
-        const isSocketClosed = !this._webSocketSubject || this._webSocketSubject.closed;
-        
+        const isSocketClosed = !this.wsSubject || this.wsSubject.closed;
+
         if (isSocketClosed) {
-            this._webSocketSubject = new WebSocketSubject(this.webSocketUrl)
+            this.wsSubject = new WebSocketSubject(this.webSocketUrl);
         }
 
-        return this._webSocketSubject;
-    } 
+        return this.wsSubject;
+    }
 
     constructor(@Inject(WS_URL) private webSocketUrl: string ) {
     }

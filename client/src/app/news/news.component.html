@@ -16,7 +16,7 @@
 <ng-container *ngIf="news$ | async as news">
     <form [formGroup]="newsFormGroup">
         <ng-container *ngFor="let item of news">
-            <news-details [news]="item" [parentForm]="newsFormGroup"></news-details>
+            <app-news-details [news]="item" [parentForm]="newsFormGroup"></app-news-details>
         </ng-container>
     </form>
 </ng-container>        

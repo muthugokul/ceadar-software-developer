@@ -2,10 +2,10 @@ import { Component, Input, OnInit } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 
 import { News } from "./models/news.model";
-import { NewsEventService } from './services/news-event.service';
+import { NewsEventService } from "./services/news-event.service";
 
 @Component({
-    selector: "news-details",
+    selector: "app-news-details",
     templateUrl: "./news-detail.component.html"
 })
 

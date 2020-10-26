@@ -5,5 +5,5 @@ import { News } from "../models/news.model";
 @Injectable()
 export class NewsEventService {
     saveNews = new EventEmitter<News>();
-    cancelNewsEdit = new EventEmitter<News>()
+    cancelNewsEdit = new EventEmitter<News>();
 }
