@@ -6,7 +6,7 @@ export interface ISortByCriteria {
 }
 
 const sortByCriteriaDefault: ISortByCriteria = {
-    column: "time",
+    column: "date",
     isAscending: false
 }
 
@@ -56,9 +56,9 @@ export class SortPipe<T> implements PipeTransform {
     private compare(current: Date, previous: Date, isAscending: boolean): boolean {
         const vlaue = this.compareDate(current, previous)
         if (isAscending) {
-            return vlaue == 1;
-        } else {
             return vlaue == -1;
+        } else {
+            return vlaue == 1;
         }
     }
 }

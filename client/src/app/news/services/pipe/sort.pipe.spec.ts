@@ -9,7 +9,7 @@ fdescribe("Sort pipe", () => {
 
     beforeEach(() => {
         sortByCriteria = {
-            column: "time"
+            column: "date"
         } as ISortByCriteria;
 
         newsArray = [
@@ -40,6 +40,7 @@ fdescribe("Sort pipe", () => {
         });
 
         it("should sort news by time in ascending order", () => {
+            sortByCriteria.isAscending = true;
             const results = target.transform(newsArray, sortByCriteria);
 
             expect(results.length).toBe(2);

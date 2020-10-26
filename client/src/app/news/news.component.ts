@@ -29,14 +29,14 @@ export class NewsComponent implements OnInit {
     sort(): void {
         if (!this.sortCriteria) {
             this.sortCriteria = {
-                column: "time",
+                column: "date",
                 isAscending: true
             } as ISortByCriteria
+        } else {
+            this.sortCriteria = {
+                column: this.sortCriteria.column,
+                isAscending: !this.sortCriteria.isAscending
+            } as ISortByCriteria;
         }
-
-        this.sortCriteria = {
-            column: this.sortCriteria.column,
-            isAscending: !this.sortCriteria.isAscending
-        } as ISortByCriteria;
     }
 }
