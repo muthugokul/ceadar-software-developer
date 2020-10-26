@@ -1,0 +1,19 @@
+<div [formGroup]="newsEditFormGroup">
+    <div class="row table-details">
+        <div class="col-md-3">
+            <input type="text" formControlName="time">
+        </div>
+        <div class="col-md-3">
+            <textarea type="text" formControlName="headlines"></textarea>
+        </div>
+        <div class="col-md-4">
+            <textarea type="text" formControlName="description"></textarea>
+        </div>
+        <div class="col-2">
+            <div class="d-flex justify-content-start">
+                <button type="button" class="btn btn-primary" (click)="save()">Save</button>
+                <button type="button" class="btn btn-link" (click)="cancel()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

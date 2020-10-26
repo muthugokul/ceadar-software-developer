@@ -1,0 +1,22 @@
+<h1>News</h1>
+<div class="row table-heading">
+    <div class="col-md-3">
+        <p>Time</p>
+    </div>
+    <div class="col-md-3">
+        <p>Headlines</p>
+    </div>
+    <div class="col-md-4">
+        <p>Description</p>
+    </div>
+    <div class="col-2">
+        <p>Action</p>
+    </div>
+</div>
+<ng-container *ngIf="news$ | async as news">
+    <form [formGroup]="newsFormGroup">
+        <ng-container *ngFor="let item of news">
+            <news-details [news]="item" [parentForm]="newsFormGroup"></news-details>
+        </ng-container>
+    </form>
+</ng-container>        
